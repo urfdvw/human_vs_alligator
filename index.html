@@ -6,20 +6,42 @@
 
 <body>
     <div id="app">
-        <h1>Human vs Alligator on Island</h1>
+        <h1>Human vs Alligator on Island 鳄口逃生</h1>
         <p>
-            The Large black circle is a island.
-            The yellow circle is you and the green circle is an aligator.
+            The Large black circle is an island on the sea.
+            The yellow circle is you and the green circle is an alligator.
             Click to run.
-            If you reached the edge of the island without get caught by the Aligator, you win.
-            Be careful, the Aligator is 4 times fasters than you!
+            Be careful, the alligator is 4 times faster than you!
+            If you reach the edge of the island without getting caught by the alligator, you win.
+            You lose if the alligator catches you.
+        </p>
+        <p>
+            你在一个海中的荒岛上，最大的黑圈就是岛的外轮廓。
+            中间的黄色小圈就是你的位置。外围的绿色小圈是鳄鱼的位置。
+            鼠标单击进行移动。
+            注意，鳄鱼的移动速度是你的4倍。
+            如果你能在鳄鱼抓到你之前跑到海边，就算你赢。
+            鳄鱼抓到你就算你输。
         </p>
         <canvas id="myCanvas" width="800" height="800" style="border:1px solid #d3d3d3;">
             Your browser does not support the HTML5 canvas tag.</canvas> <br>
-        <input type="text" id="speed" value='1' onchange="get_para()"> Game Speed <br>
-        <input type="text" id="ratio" value='4' onchange="init()"> Alligator speed / Human speed <br>
-        <input type="checkbox" id='target' unchecked onchange="get_para()"> Show Assistance<br>
-        <input type="checkbox" id='hint' unchecked onchange="get_para()"> Show Hint<br>
+        <input type="text" id="speed" value='1' onchange="get_para()"> Game Speed 游戏速度<br>
+        <input type="checkbox" id='target' unchecked onchange="get_para()"> Show Assistance 显示辅助线<br>
+        <input type="checkbox" id='hint' unchecked onchange="get_para()"> Show Hint 显示提示<br>
+
+        <br><br><br><br>
+
+        <p>
+            You’re probably wondering, why must it be exactly 4 times.
+            Test out different ratios and maybe you will find the underlying pattern.
+            Of course, a ratio that is lower than PI is cheating.
+        </p>
+        <p>
+            你可能会问，为什么非得是4倍。
+            试试别的比例，也许你能发现它背后的规律。
+            当然，比例小于PI是作弊。
+        </p>
+        <input type="text" id="ratio" value='4' onchange="init()"> Alligator's speed / Your speed 鳄鱼速度/你的速度 <br>
     </div>
 
     <script>
