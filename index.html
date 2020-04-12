@@ -19,6 +19,7 @@
         <input type="text" id="speed" value='1' onchange="get_para()"> Game Speed <br>
         <input type="text" id="ratio" value='4' onchange="init()"> Alligator speed / Human speed <br>
         <input type="checkbox" id='target' unchecked onchange="get_para()"> Show Assistance<br>
+        <input type="checkbox" id='hint' unchecked onchange="get_para()"> Show Hint<br>
     </div>
 
     <script>
@@ -43,7 +44,7 @@
         canvas.addEventListener('mousedown', function (e) {
             getCursorPosition(canvas, e)
         })
-        
+
         /* 
         Math functions 
         */
@@ -106,10 +107,12 @@
         var speed;
         var ratio;
         var show_target;
+        var show_hint;
         function get_para() {
             speed = parseFloat(document.getElementById('speed').value);
             ratio = parseFloat(document.getElementById('ratio').value);
             show_target = document.getElementById('target').checked;
+            show_hint = document.getElementById('hint').checked;
 
             // dependent parameter
             v_human = 50 * speed;
@@ -209,6 +212,9 @@
             plot_clear();
             // plot island
             plot_circle(0, 0, r_island)
+            if (show_hint) {
+                plot_circle(0, 0, 0.25 * r_island, 'blue');
+            }
             // plot alligator
             var x_alli = r_island * Math.cos(theta)
             var y_alli = r_island * Math.sin(theta)
@@ -222,7 +228,8 @@
             if (show_target) {
                 var x_alli_tar = r_island * Math.cos(theta_tar)
                 var y_alli_tar = r_island * Math.sin(theta_tar)
-                plot_circle(x_alli_tar, y_alli_tar, 10, 'red')
+                plot_circle(x_alli_tar, y_alli_tar, 5, 'red')
+                plot_circle(-x_alli_tar, -y_alli_tar, 5, 'red')
             }
 
             window.requestAnimationFrame(draw);
